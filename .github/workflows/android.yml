@@ -25,9 +25,9 @@ jobs:
         run: ./gradlew build
       - name: Build Debug APK
         run: ./gradlew assembleDebug
-      - name: Create Release
+      - name: (Re)create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: GongT/actions-recreate-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
