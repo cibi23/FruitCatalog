@@ -6,8 +6,11 @@ import org.junit.Before
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-@RunWith(JUnit4::class)
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [21])
 abstract class TestDatabase {
     lateinit var db: AppDatabase
     @Before
