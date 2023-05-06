@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "fruits")
 data class Fruit (
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: Long,
     val name: String,
     val family: String,
     val order: String,

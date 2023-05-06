@@ -6,7 +6,7 @@ import hu.bme.aut.android.fruitcatalog.model.Fruit
 @Dao
 interface FruitDao {
     @Insert
-    fun insertFruit(fruit: Fruit)
+    fun insertFruits(fruits: List<Fruit>)
 
     @Update
     fun updateFruit(fruit: Fruit)
@@ -18,5 +18,5 @@ interface FruitDao {
     fun getFruitById(id: Long): Fruit?
 
     @Query("SELECT * FROM fruits")
-    suspend fun getAllFruits(): List<Fruit>
+    fun getAllFruits(): List<Fruit>
 }
