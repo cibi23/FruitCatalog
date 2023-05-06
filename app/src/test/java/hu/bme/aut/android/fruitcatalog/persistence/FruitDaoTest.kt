@@ -8,8 +8,11 @@ import org.hamcrest.core.Is.`is`
 import kotlinx.coroutines.test.runTest
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
-@RunWith(JUnit4::class)
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [23])
 class FruitDaoTest : TestDatabase() {
     private lateinit var fruitDao: FruitDao
 
@@ -32,7 +35,7 @@ class FruitDaoTest : TestDatabase() {
         val mockDataList = listOf(Fruit.mock())
         fruitDao.insertFruits(mockDataList)
 
-        val loadedFromDB = fruitDao.getFruitById(1)
+        val loadedFromDB = fruitDao.getFruitById(3)
         val mockData = Fruit.mock()
         MatcherAssert.assertThat(loadedFromDB.toString(), `is`(mockData.toString()))
     }
@@ -42,7 +45,7 @@ class FruitDaoTest : TestDatabase() {
         val mockDataList = listOf(Fruit.mock())
         fruitDao.insertFruits(mockDataList)
 
-        var loadFromDB = fruitDao.getFruitById(1)
+        var loadFromDB = fruitDao.getFruitById(3)
         val mockData = Fruit.mock()
         loadFromDB = mockData
         fruitDao.updateFruit(loadFromDB)
@@ -53,9 +56,9 @@ class FruitDaoTest : TestDatabase() {
     fun deleteFruitTest() = runTest {
         val mockDataList = listOf(Fruit.mock())
         fruitDao.insertFruits(mockDataList)
-        val loadFromDB = fruitDao.getFruitById(1)
+        val loadFromDB = fruitDao.getFruitById(3)
         loadFromDB?.let { fruitDao.deleteFruit(it) }
-        val deleted = fruitDao.getFruitById(1)
-        assert(loadFromDB == null)
+        val deleted = fruitDao.getFruitById(3)
+        assert(deleted == null)
     }
 }
