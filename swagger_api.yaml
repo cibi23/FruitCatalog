@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: Gyümölcskatalógus
+  description:
+    "Gyümölcsök listája, illetve az egyes gyümölcsök részletes adatait kérhetjük le."
+  version: 1.0.0
+servers:
+  - url: https://www.fruityvice.com/api/
+tags:
+  - name: fruit
+    description: Everything about the fruits
+paths:
+  /fruit/all:
+    get:
+      tags:
+        - fruit
+      summary: Get all fruits
+      operationId: getAllFruits
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fruit'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fruit'
+        '400':
+          description: Error occured
+
+  /fruit/{ID}:
+    get:
+      tags:
+        - fruit
+      summary: Find fruit by ID
+      description: Returns a single fruit
+      operationId: getFruitById
+      parameters:
+        - name: ID
+          in: path
+          description: ID of fruit to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fruit'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Fruit'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Fruit not found
+components:
+  schemas:
+    Fruit:
+      type: object
+      properties:
+        name:
+          type: string
+          example: name
+        id:
+          type: integer
+          format: int64
+          example: 3
+        family:
+          type: string
+          example: family
+        order:
+          type: string
+          example: order
+        genus:
+          type: string
+          example: genus
+        nutritions:
+          $ref: '#/components/schemas/Nutritions'
+      xml:
+        name: fruit
+    Nutritions:
+      type: object
+      properties:
+        calories:
+          type: number
+          example: 0.23
+        fat:
+          type: number
+          example: 53
+        sugar:
+          type: number
+          example: 31
+        carbohydrates:
+          type: number
+          example: 3.1
+        protein:
+          type: number
+          example: 3.5
+      xml:
+        name: nutritions
