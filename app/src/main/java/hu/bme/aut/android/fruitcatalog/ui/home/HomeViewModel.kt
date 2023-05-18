@@ -1,5 +1,8 @@
 package hu.bme.aut.android.fruitcatalog.ui.home
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import hu.bme.aut.android.fruitcatalog.model.Fruit
@@ -16,4 +19,8 @@ class HomeViewModel @Inject constructor(
             onCompletion = { },
             onError = {}
         )
+
+    private val _isLoading: MutableState<Boolean> = mutableStateOf(false)
+    val isLoading: State<Boolean> get() = _isLoading
+
 }

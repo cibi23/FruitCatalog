@@ -7,8 +7,8 @@ import retrofit2.http.Path
 
 interface FruitService {
     @GET("fruit/all")
-    fun getAllFruits(): ApiResponse<List<Fruit>>
+    suspend fun getAllFruits(): ApiResponse<List<Fruit>>
 
-    @GET("fruit/{id}}")
-    fun getFruitById(@Path("id") id: Int): ApiResponse<Fruit>
+    @GET("fruit/{id}")
+    suspend fun getFruitById(@Path("id") id: Int): ApiResponse<Fruit>
 }
