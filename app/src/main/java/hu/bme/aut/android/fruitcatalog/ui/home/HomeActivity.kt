@@ -15,7 +15,7 @@ class HomeActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            DisneyMainScreen()
+            FruitCatalogHomeScreen()
         }
     }
 }
