@@ -18,5 +18,5 @@ interface FruitDao {
     fun getFruitById(id: Long): Fruit?
 
     @Query("SELECT * FROM fruits")
-    suspend fun getAllFruits(): List<Fruit>
+    fun getAllFruits(): List<Fruit>
 }

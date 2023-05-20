@@ -8,10 +8,7 @@ import hu.bme.aut.android.fruitcatalog.model.Fruit
 import hu.bme.aut.android.fruitcatalog.network.FruitService
 import hu.bme.aut.android.fruitcatalog.persistence.FruitDao
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class HomeRepository @Inject constructor(
@@ -53,7 +50,8 @@ class HomeRepository @Inject constructor(
     @WorkerThread
     suspend fun deleteFruit(
         fruit: Fruit
-    )= fruitDao.deleteFruit(fruit)
+    ) = fruitDao.deleteFruit(fruit)
+
 
 
 

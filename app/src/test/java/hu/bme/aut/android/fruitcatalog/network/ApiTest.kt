@@ -1,6 +1,7 @@
 package hu.bme.aut.android.fruitcatalog.network
 
 import hu.bme.aut.android.fruitcatalog.model.Fruit
+import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -28,7 +29,7 @@ abstract class ApiTest<T> {
     }
 
     @Test
-    fun testGetById(){
+    fun testGetById() {
         val response = MockResponse()
             .addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody(Fruit.mock().toString())
