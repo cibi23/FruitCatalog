@@ -6,10 +6,10 @@ import hu.bme.aut.android.fruitcatalog.model.Fruit
 @Dao
 interface FruitDao {
     @Insert
-    fun insertFruits(fruits: List<Fruit>)
+    suspend fun insertFruits(fruits: List<Fruit>)
 
     @Update
-    fun updateFruit(fruit: Fruit)
+    suspend fun updateFruit(fruit: Fruit)
 
     @Delete
     suspend fun deleteFruit(fruit: Fruit)

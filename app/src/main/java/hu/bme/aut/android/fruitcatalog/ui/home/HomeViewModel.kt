@@ -20,7 +20,8 @@ class HomeViewModel @Inject constructor(
             onCompletion = { },
             onError = {}
         )
-    private val _isLoading: MutableState<Boolean> = mutableStateOf(false)
-    val isLoading: State<Boolean> get() = _isLoading
+
     suspend fun deleteFruit(fruit: Fruit) = homeRepository.deleteFruit(fruit)
+    suspend fun insertFruit(fruit: Fruit) = homeRepository.insertFruit(fruit)
+    suspend fun updateFruit(fruit: Fruit) = homeRepository.updateFruit(fruit)
 }

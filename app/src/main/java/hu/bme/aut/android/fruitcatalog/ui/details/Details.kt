@@ -27,7 +27,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 
 import androidx.compose.foundation.layout.padding
-
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 
 @Composable
@@ -42,50 +43,72 @@ fun FruitDetails(
 
     val details: Fruit? by viewModel.fruitFlow.collectAsState(initial = null)
     details?.let { fruit ->
-        FruitDetailsBody(fruit, pressOnBack)
+        FruitDetailsBody(fruit = fruit, pressOnBack = pressOnBack)
     }
 }
 
 @Composable
 private fun FruitDetailsBody(
+    modifier: Modifier = Modifier,
     fruit: Fruit,
     pressOnBack: () -> Unit
 ) {
-    Column(){
+    Column(modifier = modifier.padding(24.dp)){
         Text(
+            modifier = modifier.padding(4.dp),
             text="Family: " + fruit.family,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.h6,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         Text(
+            modifier = modifier.padding(4.dp),
             text="Genus: " + fruit.genus,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.h6,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         Text(
+            modifier = modifier.padding(4.dp),
             text="Sugar: " + fruit.nutritions.sugar,
             style = MaterialTheme.typography.body1,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         Text(
+            modifier = modifier.padding(4.dp),
             text="Carbohydrates: " + fruit.nutritions.carbohydrate,
             style = MaterialTheme.typography.body1,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         Text(
+            modifier = modifier.padding(4.dp),
             text="Protein: " + fruit.nutritions.protein,
             style = MaterialTheme.typography.body1,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         Text(
+            modifier = modifier.padding(4.dp),
             text="Fat: " + fruit.nutritions.fat,
             style = MaterialTheme.typography.body1,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         Text(
+            modifier = modifier.padding(4.dp),
             text="Calories: " + fruit.nutritions.calories,
             style = MaterialTheme.typography.body1,
             textAlign = TextAlign.Center,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
     }
 }

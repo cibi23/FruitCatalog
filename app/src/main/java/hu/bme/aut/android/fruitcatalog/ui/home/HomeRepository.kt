@@ -37,53 +37,24 @@ class HomeRepository @Inject constructor(
         }
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
 
-    // TODO
     @WorkerThread
-    fun insertFruit(
-        onStart: () -> Unit,
-        onCompletion: () -> Unit,
-        onError: (String) -> Unit
-    ) = flow {
-        val fruits: List<Fruit> = fruitDao.getAllFruits()
-        if (fruits.isEmpty()) {
-            fruitService.getAllFruits()
-                .suspendOnSuccess {
-                    fruitDao.insertFruits(data)
-                    emit(data)
-                }
-                .onFailure { onError(message()) }
-        } else {
-            emit(fruits)
-        }
-    }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
+    suspend fun updateFruit(
+        fruit: Fruit
+    ) = fruitDao.updateFruit(fruit)
 
-    // TODO
+
     @WorkerThread
-    fun updateFruit(
-        onStart: () -> Unit,
-        onCompletion: () -> Unit,
-        onError: (String) -> Unit
-    ) = flow {
-        val fruits: List<Fruit> = fruitDao.getAllFruits()
-        if (fruits.isEmpty()) {
-            fruitService.getAllFruits()
-                .suspendOnSuccess {
-                    fruitDao.insertFruits(data)
-                    emit(data)
-                }
-                .onFailure { onError(message()) }
-        } else {
-            emit(fruits)
-        }
-    }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
-
+    suspend fun insertFruit(
+        fruit: Fruit
+    ) {
+        val list: List<Fruit> = listOf(fruit)
+        fruitDao.insertFruits(list)
+    }
     @WorkerThread
     suspend fun deleteFruit(
         fruit: Fruit
-    ) = flow {
-        fruitDao.deleteFruit(fruit)
-        emit("")
-    }.flowOn(Dispatchers.IO)
+    )= fruitDao.deleteFruit(fruit)
+
 
 
 
