@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "742063064172",
+    "project_id": "fruitcatalog",
+    "storage_bucket": "fruitcatalog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742063064172:android:693549e2849ff0df878449",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.android.fruitcatalog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJPMFkuLNTWpprhzupjMj3vJ2dYB9PczQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
