@@ -152,7 +152,13 @@ fun Fruits(
                         "contentDescription",
                     )
                 }
+                Button(
+                    onClick = { throw RuntimeException("Test Crash")},
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue) ) {
+                    Text("Crash", color = MaterialTheme.colors.onPrimary)
+                }
             }
+
             fruits.forEach { fruit ->
                 if (searchText == "" || fruit.name.toLowerCase().contains(searchText.toLowerCase()))
                     MyFruit(
